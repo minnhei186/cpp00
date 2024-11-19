@@ -6,7 +6,7 @@
 /*   By: hosokawa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:35:43 by hosokawa          #+#    #+#             */
-/*   Updated: 2024/11/19 14:35:56 by hosokawa         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:12:47 by hosokawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,20 @@ void print_menu(void)
 
 	std::cout<<std::endl;
 }
+
+void print_add_format(void)
+{
+	std::cout<<"-you must adhere to the following format-\n";
+	std::cout<<"     *Saved contacts must not have empty fields.\n";
+	std::cout<<"\n";
+	std::cout<<"1. first name\n";
+	std::cout<<"2. last name\n";
+	std::cout<<"3. nickname\n";
+	std::cout<<"4. phone number \n";
+	std::cout<<"5. darkest secret\n";
+}
+
+
 
 void menu(int *status)
 {
@@ -48,6 +62,13 @@ void menu(int *status)
 		*status=-1;
 }
 
+void add(Contacts list[8],int *status)
+{
+	(void)list;
+	(void)status;
+	print_add_format();
+}
+
 	
 int main(void)
 {
@@ -60,10 +81,8 @@ int main(void)
 	{
 		if(status==0)
 			menu(&status);
-		line=list[0].get_index();
-		std::cout<<line<<std::endl;	
-		//if(status==1)
-		//	add(list);
+		if(status==1)
+			add(list,&status);
 		//else if(status==2)
 		//	search(list);
 		//else if(status==3)
