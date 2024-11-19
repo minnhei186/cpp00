@@ -6,7 +6,7 @@
 /*   By: hosokawa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:16:22 by hosokawa          #+#    #+#             */
-/*   Updated: 2024/11/19 15:14:09 by hosokawa         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:33:46 by hosokawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ class Contacts
 		std::string secret;
 	public:
 		Contacts();
+		void add_info();  
+		
 
 		const std::string&	get_firstname(void) const;
 		const std::string&	get_lastname(void) const;

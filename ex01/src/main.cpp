@@ -6,7 +6,7 @@
 /*   By: hosokawa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:35:43 by hosokawa          #+#    #+#             */
-/*   Updated: 2024/11/19 15:12:47 by hosokawa         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:37:14 by hosokawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void print_add_format(void)
 	std::cout<<"3. nickname\n";
 	std::cout<<"4. phone number \n";
 	std::cout<<"5. darkest secret\n";
+
+	std::cout<<std::endl;
 }
 
 
@@ -62,11 +64,17 @@ void menu(int *status)
 		*status=-1;
 }
 
-void add(Contacts list[8],int *status)
+void add(Contacts list[8])
 {
-	(void)list;
-	(void)status;
+	static int i;
+
 	print_add_format();
+
+	if(i==8)
+		i=0;
+	list[i].add_info();
+	i++;
+
 }
 
 	
@@ -82,7 +90,7 @@ int main(void)
 		if(status==0)
 			menu(&status);
 		if(status==1)
-			add(list,&status);
+			add(list);
 		//else if(status==2)
 		//	search(list);
 		//else if(status==3)
