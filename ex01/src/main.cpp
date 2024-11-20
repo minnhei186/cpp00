@@ -6,39 +6,11 @@
 /*   By: hosokawa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:35:43 by hosokawa          #+#    #+#             */
-/*   Updated: 2024/11/19 15:37:14 by hosokawa         ###   ########.fr       */
+/*   Updated: 2024/11/20 05:44:42 by hosokawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contacts.hpp"
-
-void print_menu(void)
-{
-	std::cout<<" ____menu____\n";
-	std::cout<<"|            |\n";
-	std::cout<<"|    add     |\n";
-	std::cout<<"|   search   |\n";
-	std::cout<<"|    exit    |\n";
-	std::cout<<"|____________|\n";
-
-	std::cout<<std::endl;
-}
-
-void print_add_format(void)
-{
-	std::cout<<"-you must adhere to the following format-\n";
-	std::cout<<"     *Saved contacts must not have empty fields.\n";
-	std::cout<<"\n";
-	std::cout<<"1. first name\n";
-	std::cout<<"2. last name\n";
-	std::cout<<"3. nickname\n";
-	std::cout<<"4. phone number \n";
-	std::cout<<"5. darkest secret\n";
-
-	std::cout<<std::endl;
-}
-
-
+#include "main.hpp"
 
 void menu(int *status)
 {
@@ -49,6 +21,7 @@ void menu(int *status)
 	std::cout<<"----";
 	std::cout<<std::endl;
 	
+	std::cout<<">>";
 	std::getline(std::cin,select_word);
 
 	std::cout<<"----.";
@@ -77,6 +50,32 @@ void add(Contacts list[8])
 
 }
 
+void search(Contacts list[8])
+{
+	std::string index;
+	
+
+	print_search_format(list);
+
+	std::cout<<"-whose infomation do you want to know ?-\n";
+	std::cout<<"                 *enter the index number of a person.\n";
+	std::cout<<std::endl;
+
+	std::cout<<"---------\n";
+	std::cout<<">>index:";
+	std::getline(std::cin,index);
+	std::cout<<"---------.\n";
+
+	//std::stringstream ss(index);
+	
+	//i_index=index.atoi();
+	std::cout<<"\n";
+	list[0].print_info();
+
+	std::cout<<"------------------------------.";
+	std::cout<<std::endl;
+}
+	
 	
 int main(void)
 {
@@ -91,8 +90,8 @@ int main(void)
 			menu(&status);
 		if(status==1)
 			add(list);
-		//else if(status==2)
-		//	search(list);
+		else if(status==2)
+			search(list);
 		//else if(status==3)
 		//	exit_book();
 		//else

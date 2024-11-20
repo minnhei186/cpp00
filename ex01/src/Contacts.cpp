@@ -1,23 +1,21 @@
-/* ************************************************************************** */
-/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Contacts.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hosokawa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:35:24 by hosokawa          #+#    #+#             */
-/*   Updated: 2024/11/19 15:34:10 by hosokawa         ###   ########.fr       */
+/*   Updated: 2024/11/20 05:42:37 by hosokawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contacts.hpp"
+#include "main.hpp"
 
 Contacts::Contacts():
-	firstname("default"),
-	lastname("default"),
-	nickname("default"),
-	number("default"),
-	secret("default") {}
+	firstname("no data"),
+	lastname("no data"),
+	nickname("no data "),
+	number("no data"),
+	secret("no data") {}
 
 void Contacts::add_info(void)
 {
@@ -32,4 +30,30 @@ void Contacts::add_info(void)
 	std::cout<<"5.>>";
 	std::getline(std::cin,secret);
 }
+
+void Contacts::print_info(void)
+{
+	std::cout<<std::setw(16)<<"First name";
+	std::cout<<" - ";
+	std::cout<<this->firstname<<"\n";
+
+	std::cout<<std::setw(16)<<"Last name";
+	std::cout<<" - ";
+	std::cout<<this->lastname<<"\n";
+
+	std::cout<<std::setw(16)<<"Nickname";
+	std::cout<<" - ";
+	std::cout<<this->nickname<<"\n";
+
+	std::cout<<std::setw(16)<<"Phone number";
+	std::cout<<" - ";
+	std::cout<<this->number<<"\n";
+
+	std::cout<<std::setw(16)<<"Top secret";
+	std::cout<<" - ";
+	std::cout<<this->secret;
+
+	std::cout<<std::endl;
+}
+
 
