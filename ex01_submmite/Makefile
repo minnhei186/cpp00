@@ -9,10 +9,10 @@ NAME=phonebook
 all:$(NAME)
 
 $(NAME):$(OBJS)
-	$(CXX) $(OBJS) -o $@
+	$(CXX) $(OBJS)  -o $@
 
 %.o:%.cpp
-	$(CXX) $(CXXFLAGS) $(CXXVER) $(INC) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -g $(CXXVER) $(INC) -c $< -o $@
 
 clean :
 	rm -rf $(OBJS)

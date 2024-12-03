@@ -1,21 +1,25 @@
-CXX     := clang++
-CXXFLAGS:= -Wall -Wextra -Werror -g
-SRCS=megaphone.cpp
+CXX=c++
+CXXFLAGS=-Wall -Wextra -Werror
+CXXVER=-std=c++98
+SRCS=$(wildcard src/*.cpp)
 OBJS=$(SRCS:.cpp=.o)
+INC=-Iinclude
 NAME=megaphone
 
+all:$(NAME)
 
-all     : $(NAME)
+$(NAME):$(OBJS)
+	$(CXX) $(OBJS) -o $@
 
-$(NAME) : $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 %.o:%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@ 
-clean:
+	$(CXX) $(CXXFLAGS) $(CXXVER) $(INC) -c $< -o $@
+
+clean :
 	rm -rf $(OBJS)
-fclean:clean
-	rm -f $(NAME)
-re:fclean all
 
+fclean : clean
+	rm -rf $(NAME)
 
-.PHONY  : all clean fclean re
+re : fclean all
+
+.PHONY : all clean fclean re
