@@ -3,7 +3,6 @@ CXXFLAGS=-Wall -Wextra -Werror
 CXXVER=-std=c++98
 SRCS=$(wildcard src/*.cpp)
 OBJS=$(SRCS:.cpp=.o)
-INC=-Iinclude
 NAME=megaphone
 
 all:$(NAME)
@@ -12,7 +11,7 @@ $(NAME):$(OBJS)
 	$(CXX) $(OBJS) -o $@
 
 %.o:%.cpp
-	$(CXX) $(CXXFLAGS) $(CXXVER) $(INC) -c $< -o $@
+	$(CXX) $(CXXFLAGS) $(CXXVER) -c $< -o $@
 
 clean :
 	rm -rf $(OBJS)
