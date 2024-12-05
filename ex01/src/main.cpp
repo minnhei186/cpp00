@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hosokawa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hosokawa <marvin@42.fr>                         +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:35:43 by hosokawa          #+#    #+#             */
-/*   Updated: 2024/11/27 15:44:13 by hosokawa         ###   ########.fr       */
+/*   Updated: 2024/12/05 17:37:29 by hosokawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,27 @@ void menu(int *status)
 	std::cout<<std::endl;
 	
 	std::cout<<">>";
-	std::getline(std::cin,select_word);
+	if(!std::getline(std::cin,select_word))
+	{
+		std::cout<<"getline error occurred  or recive eof...sorry...exit"<<std::endl;
+		exit (EXIT_FAILURE);
+	}
+
 
 	std::cout<<"----.";
 	std::cout<<std::endl;
 
-	if(select_word.compare("add")==0)
+	if(select_word.compare("ADD")==0)
 		*status=1;
-	else if(select_word.compare("search")==0)
+	else if(select_word.compare("SEARCH")==0)
 		*status=2;
-	else if(select_word.compare("exit")==0)
+	else if(select_word.compare("EXIT")==0)
 		*status=3;
 	else 
+	{
+		std::cout<<"...always be vigilant..."<<std::endl;
 		*status=-1;
+	}
 }
 	
 int main(void)
@@ -45,7 +53,7 @@ int main(void)
 	PhoneBook book;
 
 	status=0;
-	while(42)
+	while(true)
 	{
 		if(status==0)
 			menu(&status);

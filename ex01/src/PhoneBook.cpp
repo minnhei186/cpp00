@@ -6,7 +6,7 @@
 /*   By: hosokawa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:02:59 by hosokawa          #+#    #+#             */
-/*   Updated: 2024/12/04 17:04:00 by hosokawa         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:26:09 by hosokawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,20 @@ void PhoneBook::add()
 	if (add_count > 7)
 	{
 		deleat_old_info();
-		list[7].add_info();
+		if(list[7].add_info()==false)
+		{
+			list[7].init_info();
+			return ;
+		}
 	}
 	else
-		list[add_count].add_info();
+	{
+		if(list[add_count].add_info()==false)
+		{
+			list[add_count].init_info();
+			return ;
+		}
+	}
 	add_count++;
 }
 
@@ -54,21 +64,32 @@ void PhoneBook::search()
 	std::string index_str;
 	print_search_format(list);
 	std::cout << "-whose infomation do you want to know ?-\n";
-	std::cout << "                 *enter the index number of a person.\n";
+	std::cout << "                 *enter the index number of a person(1~8).\n";
 	std::cout << std::endl;
 	std::cout << "---------\n";
 	std::cout << ">>index:";
-	std::getline(std::cin, index_str);
+	if(!std::getline(std::cin, index_str))
+	{
+		std::cout<<"getline error occurred  or recive eof...sorry...exit"<<std::endl;
+		exit (EXIT_FAILURE);
+	}
 	std::cout << "---------.\n";
+
+	if(!is_all_digits(index_str)||index_str.length() !=1)
+	{
+		std::cout<<"...please 1~8 number..."<<std::endl;
+		return ;
+	}
+
 	index = std::stoi(index_str);
 	if (index < 1 || 8 < index)
 	{
-		std::cout << "please 1~8 number" << std::endl;
+		std::cout << "...please 1~8 number..." << std::endl;
 		return ;
 	}
 	if (list[index - 1].get_firstname() == "no data")
 	{
-		std::cout << "No contact found at this index." << std::endl;
+		std::cout << "...no contact found at this index..." << std::endl;
 		return ;
 	}
 	std::cout << "\n";

@@ -17,18 +17,84 @@ Contacts::Contacts():
 	number("no data"),
 	secret("no data") {}
 
-void Contacts::add_info(void)
+void Contacts::init_info(void)
+{
+	firstname="no data";
+	lastname="no data";
+	nickname="no data ";
+	number="no data";
+	secret="no data";
+}
+
+bool Contacts::add_info(void)
 {
 	std::cout<<"1.>>";
-	std::getline(std::cin,firstname);
+	if(std::getline(std::cin,firstname)==false)
+	{
+		std::cout<<"getline error occurred  or recive eof...sorry...exit"<<std::endl;
+		exit (EXIT_FAILURE);
+	}
+	if(firstname.empty())
+	{
+		std::cout<<"...need string...retry..."<<std::endl; 
+		return false;
+	}
+
 	std::cout<<"2.>>";
-	std::getline(std::cin,lastname);
+	if(std::getline(std::cin,lastname)==false)
+	{
+		std::cout<<"getline error occurred  or recive eof...sorry...exit"<<std::endl;
+		exit (EXIT_FAILURE);
+	}
+	if(lastname.empty())
+	{
+
+		std::cout<<"...need string...retry..."<<std::endl; 
+		return false;
+	}
+
 	std::cout<<"3.>>";
-	std::getline(std::cin,nickname);
+	if(std::getline(std::cin,nickname)==false)
+	{
+		std::cout<<"getline error occurred  or recive eof...sorry...exit"<<std::endl;
+		exit (EXIT_FAILURE);
+	}
+	if(nickname.empty())
+	{
+
+		std::cout<<"...need string...retry..."<<std::endl; 
+		return false;
+	}
+
+
 	std::cout<<"4.>>";
-	std::getline(std::cin,number);
+	if(std::getline(std::cin,number)==false)
+	{
+		std::cout<<"getline error occurred  or recive eof...sorry...exit"<<std::endl;
+		exit (EXIT_FAILURE);
+	}
+	if(number.empty())
+	{
+
+		std::cout<<"...need string...retry..."<<std::endl; 
+		return false;
+	}
+
+
 	std::cout<<"5.>>";
-	std::getline(std::cin,secret);
+	if(std::getline(std::cin,secret)==false)
+	{
+		std::cout<<"getline error occurred  or recive eof...sorry...exit"<<std::endl;
+		exit (EXIT_FAILURE);
+	}
+	if(secret.empty())
+	{
+
+		std::cout<<"...need string...retry..."<<std::endl; 
+		return false;
+	}
+
+	return true;
 }
 
 void Contacts::print_info(void)

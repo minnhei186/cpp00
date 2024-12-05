@@ -6,11 +6,29 @@
 /*   By: hosokawa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:23:35 by hosokawa          #+#    #+#             */
-/*   Updated: 2024/11/20 16:52:02 by hosokawa         ###   ########.fr       */
+/*   Updated: 2024/12/05 17:38:38 by hosokawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contacts.hpp"
+
+bool is_all_digits(const std::string& str) 
+{
+    size_t i ;
+
+    if(str.empty())
+	    return false;
+    i=0;
+    while (i < str.size()) 
+    {
+        if (!std::isdigit((unsigned char)str[i])) 
+	{
+            return false;
+        }
+        ++i;
+    }
+    return true;
+}
 
 static std::string format_field(const std::string& field)
 {
@@ -27,9 +45,9 @@ void print_menu(void)
 	std::cout<<"		"<<"  ........menu.........  \n";
 	std::cout<<"		"<<"._______________________.\n";
 	std::cout<<"		"<<"|                       |\n";
-	std::cout<<"		"<<"|          add          |\n";
-	std::cout<<"		"<<"|         search        |\n";
-	std::cout<<"		"<<"|          exit         |\n";
+	std::cout<<"		"<<"|          ADD          |\n";
+	std::cout<<"		"<<"|         SEARCH        |\n";
+	std::cout<<"		"<<"|          EXIT         |\n";
 	std::cout<<"		"<<"|                       |\n";
 	std::cout<<"		"<<"|-----------------------|\n";
 	std::cout<<"		"<<".----------/-/---------.\n";
